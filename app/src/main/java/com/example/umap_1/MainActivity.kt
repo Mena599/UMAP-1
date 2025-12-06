@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             UMAP1Theme {
-                HomeScreen()
+              LoginScreen()
             }
         }
     }
