@@ -7,10 +7,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.umap_1.R
 
 @Composable
-fun BotonNavegacion() {
+fun BotonNavegacion(navController: NavController) {
+
+    val currentRoute = navController
+        .currentBackStackEntryAsState().value?.destination?.route
 
     NavigationBar(
         containerColor = Color(0xFF0BBF91),
@@ -18,11 +23,15 @@ fun BotonNavegacion() {
     ) {
 
         NavigationBarItem(
-            selected = true,
-            onClick = { },
+            selected = currentRoute == "home",
+            onClick = {
+                navController.navigate("home") {
+                    launchSingleTop = true
+                }
+            },
             icon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.hogar),
+                    painterResource(id = R.drawable.hogar),
                     contentDescription = "Inicio",
                     tint = Color.Unspecified,
                     modifier = Modifier.size(36.dp)
@@ -32,11 +41,15 @@ fun BotonNavegacion() {
         )
 
         NavigationBarItem(
-            selected = false,
-            onClick = { },
+            selected = currentRoute == "favoritos",
+            onClick = {
+                navController.navigate("favoritos") {
+                    launchSingleTop = true
+                }
+            },
             icon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.favorito),
+                    painterResource(id = R.drawable.favorito),
                     contentDescription = "Favoritos",
                     tint = Color.Unspecified,
                     modifier = Modifier.size(36.dp)
@@ -45,5 +58,4 @@ fun BotonNavegacion() {
             label = { Text("Favoritos", color = Color.White) }
         )
     }
-
 }

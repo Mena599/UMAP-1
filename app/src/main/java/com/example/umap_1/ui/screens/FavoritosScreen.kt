@@ -1,6 +1,5 @@
 package com.example.umap_1.ui.screens
 
-import android.widget.Space
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,19 +11,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.umap_1.components.BotonNavegacion
 import com.example.umap_1.components.MapCard
 import com.example.umap_1.components.TopFavoritos
-import com.example.umap_1.components.TopHeader
 
 
 @Composable
-fun FavoritosScreen(){
+fun FavoritosScreen(navController: NavHostController) {
 
 
     Scaffold(
         topBar = { TopFavoritos() },
-        bottomBar = { BotonNavegacion() }
+        bottomBar = { BotonNavegacion(navController) }
     ) { padding ->
 
         Column(

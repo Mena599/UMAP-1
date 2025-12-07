@@ -31,13 +31,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.umap_1.R
 
 
 @Composable
-fun LoginScreen(
-) {
-
+fun LoginScreen(navController: NavController) {
+    var mensaje by remember { mutableStateOf("") }
     val backgroundColor = Color(0xFF00C896)
     val cardColor = Color.White
     val textColor = Color(0xFF1B1B1B)
@@ -105,7 +105,15 @@ fun LoginScreen(
                     )
 
                     Button(
-                        onClick = { },
+                        onClick = {
+                            if (email.isEmpty() || password.isEmpty()){
+                                mensaje = "Ingresa los dos valores"
+                            }else if (email == "mena" &&  password == "123"){
+                                navController.navigate("Home")
+                            }else{
+                                mensaje = "checale we algo esta mal"
+                            }
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 16.dp),
@@ -115,8 +123,9 @@ fun LoginScreen(
                             contentColor = Color.White
                         )
                     ) {
-                        Text("Entrar")
+                        Text(text = "Ingresar")
                     }
+                    Text(text = mensaje)
                 }
             }
         }
