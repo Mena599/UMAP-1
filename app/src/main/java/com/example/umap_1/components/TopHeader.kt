@@ -32,3 +32,21 @@ fun TopHeader() {
         )
     }
 }
+@Composable
+fun TopFavoritos() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .statusBarsPadding()
+            .background(Color(0xFF003A66))
+            .padding(vertical = 12.dp)
+    ) {
+        Text(
+            text = "Favoritos",
+            color = Color.White,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
+}

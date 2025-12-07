@@ -37,8 +37,8 @@ import com.example.umap_1.R
 @Composable
 fun LoginScreen(
 ) {
-    // Colores principales
-    val backgroundColor = Color(0xFF00C896) // Verde moderno
+
+    val backgroundColor = Color(0xFF00C896)
     val cardColor = Color.White
     val textColor = Color(0xFF1B1B1B)
     val accentColor = Color(0xFF6AE4C1)
