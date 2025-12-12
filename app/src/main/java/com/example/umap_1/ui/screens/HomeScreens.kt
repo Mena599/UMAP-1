@@ -13,10 +13,10 @@ import com.example.umap_1.components.BotonNavegacion
 import com.example.umap_1.components.CategoriasMenu
 import com.example.umap_1.components.MapCard
 import com.example.umap_1.components.TopHeader
-
+import com.example.umap_1.viewmodel.PuntosViewModel
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, puntosViewModel: PuntosViewModel) {
     Scaffold(
         topBar = { TopHeader() },
         bottomBar = { BotonNavegacion(navController) }
@@ -35,7 +35,12 @@ fun HomeScreen(navController: NavController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            MapCard()
+            MapCard(
+                puntosViewModel = puntosViewModel,
+                onMarkerClick = {}
+            )
+
+
 
             Spacer(modifier = Modifier.height(20.dp))
         }

@@ -59,3 +59,70 @@ fun BotonNavegacion(navController: NavController) {
         )
     }
 }
+
+@Composable
+fun BotonNavegacionSuperAdmin(navController: NavController, onAddClick: () -> Unit) {
+
+    val currentRoute = navController
+        .currentBackStackEntryAsState().value?.destination?.route
+
+    NavigationBar(
+        containerColor = Color(0xFF0BBF91),
+        tonalElevation = 8.dp
+    ) {
+
+        // --- INICIO ---
+        NavigationBarItem(
+            selected = currentRoute == "superadmin",
+            onClick = {
+                navController.navigate("superadmin") {
+                    launchSingleTop = true
+                }
+            },
+            icon = {
+                Icon(
+                    painterResource(id = R.drawable.hogar),
+                    contentDescription = "Inicio",
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(36.dp)
+                )
+            },
+            label = { Text("Inicio", color = Color.White) }
+        )
+
+        // --- BOTÓN AGREGAR ---
+        NavigationBarItem(
+            selected = false,
+            onClick = { onAddClick() },
+            icon = {
+                Icon(
+                    painterResource(id = R.drawable.crear), // <- Luego te genero el ícono
+                    contentDescription = "Agregar",
+                    tint = Color.White,
+                    modifier = Modifier.size(45.dp)
+                )
+            },
+            label = { Text("Agregar", color = Color.White) }
+        )
+
+        // --- FAVORITOS ---
+        NavigationBarItem(
+            selected = currentRoute == "favoritosAdmin",
+            onClick = {
+                navController.navigate("favoritosAdmin") {
+                    launchSingleTop = true
+                }
+            },
+            icon = {
+                Icon(
+                    painterResource(id = R.drawable.favorito),
+                    contentDescription = "Favoritos",
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(36.dp)
+                )
+            },
+            label = { Text("Favoritos", color = Color.White) }
+        )
+    }
+}
+

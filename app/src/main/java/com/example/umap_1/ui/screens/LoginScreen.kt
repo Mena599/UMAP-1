@@ -106,12 +106,19 @@ fun LoginScreen(navController: NavController) {
 
                     Button(
                         onClick = {
-                            if (email.isEmpty() || password.isEmpty()){
+                            if (email.isEmpty() || password.isEmpty()) {
                                 mensaje = "Ingresa los dos valores"
-                            }else if (email == "mena" &&  password == "123"){
+                            }
+                            // SUPERADMIN
+                            else if (email == "admin" && password == "123") {
+                                navController.navigate("SuperAdmin")
+                            }
+                            // USUARIO NORMAL
+                            else if (email == "mena" && password == "123") {
                                 navController.navigate("Home")
-                            }else{
-                                mensaje = "checale we algo esta mal"
+                            }
+                            else {
+                                mensaje = "Usuario o contraseña incorrectos"
                             }
                         },
                         modifier = Modifier

@@ -15,10 +15,11 @@ import androidx.navigation.NavHostController
 import com.example.umap_1.components.BotonNavegacion
 import com.example.umap_1.components.MapCard
 import com.example.umap_1.components.TopFavoritos
+import com.example.umap_1.viewmodel.PuntosViewModel
 
 
 @Composable
-fun FavoritosScreen(navController: NavHostController) {
+fun FavoritosScreen(navController: NavHostController, puntosViewModel: PuntosViewModel) {
 
 
     Scaffold(
@@ -33,7 +34,12 @@ fun FavoritosScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally
 
         ) {
-            MapCard()
+            MapCard(
+                puntosViewModel = puntosViewModel,
+                onMarkerClick = {}
+            )
+
+
             Spacer(modifier = Modifier.height(20.dp))
         }
     }
